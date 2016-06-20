@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+	<gpx xmlns="http://www.topografix.com/GPX/1/1"
+		 xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3"
+		 xmlns:gpxtrkx="http://www.garmin.com/xmlschemas/TrackStatsExtension/v1"
+		 xmlns:wptx1="http://www.garmin.com/xmlschemas/WaypointExtension/v1"
+		 xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1"
+		 creator="eTrex 30"
+		 version="1.1"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www8.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackStatsExtension/v1 http://www8.garmin.com/xmlschemas/TrackStatsExtension.xsd http://www.garmin.com/xmlschemas/WaypointExtension/v1 http://www8.garmin.com/xmlschemas/WaypointExtensionv1.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
+		<metadata>
+			<link href="http://www.garmin.com">
+				<text>Garmin International</text>
+			</link>
+			<time>2015-09-16T08:03:45Z</time>
+		</metadata>
+		<trk>
+			<name>2015-09-15 11:17:35 День</name>
+			<extensions>
+				<gpxx:TrackExtension>
+					<gpxx:DisplayColor>Black</gpxx:DisplayColor>
+				</gpxx:TrackExtension>
+			</extensions>
+			<trkseg>
+				<trkpt lat="42.6590657886" lon="42.0059667528">
+					<ele>150.10</ele>
+					<time>2015-09-15T07:17:35Z</time>
+				</trkpt>
+				<trkpt lat="42.6591051836" lon="42.0059534255">
+					<ele>154.43</ele>
+					<time>2015-09-15T07:17:54Z</time>
+				</trkpt>
+				<trkpt lat="42.6591069438" lon="42.0059468877">
+					<ele>158.27</ele>
+					<time>2015-09-15T07:17:56Z</time>
+				</trkpt>
+				<trkpt lat="42.6591133140" lon="42.0059473906">
+					<ele>162.12</ele>
+					<time>2015-09-15T07:17:58Z</time>
+				</trkpt>
+				<trkpt lat="42.6591162477" lon="42.0059494860">
+					<ele>165.48</ele>
+					<time>2015-09-15T07:18:00Z</time>
+				</trkpt>
+				<trkpt lat="42.6591195166" lon="42.0059477258">
+					<ele>168.85</ele>
+					<time>2015-09-15T07:18:02Z</time>
+				</trkpt>
+				<trkpt lat="42.6591231208" lon="42.0059483126">
+					<ele>171.73</ele>
+					<time>2015-09-15T07:18:04Z</time>
+				</trkpt>
+				<trkpt lat="42.6591302454" lon="42.0059456304">
+					<ele>176.06</ele>
+					<time>2015-09-15T07:18:07Z</time>
+				</trkpt>
+				<trkpt lat="42.6591434050" lon="42.0059456304">
+					<ele>179.90</ele>
+					<time>2015-09-15T07:18:09Z</time>
+				</trkpt>
+				<trkpt lat="42.6591413096" lon="42.0059438702">
+					<ele>179.90</ele>
+					<time>2015-09-15T07:18:10Z</time>
+				</trkpt>
+				<trkpt lat="42.6591385435" lon="42.0059389248">
+					<ele>183.27</ele>
+					<time>2015-09-15T07:18:13Z</time>
+				</trkpt>
+				<trkpt lat="42.6591374539" lon="42.0059385896">
+					<ele>186.63</ele>
+					<time>2015-09-15T07:18:16Z</time>
+				</trkpt>
+				<trkpt lat="42.6591351908" lon="42.0059429482">
+					<ele>190.48</ele>
+					<time>2015-09-15T07:18:20Z</time>
+				</trkpt>
+				<trkpt lat="42.6591346879" lon="42.0059514977">
+					<ele>193.36</ele>
+					<time>2015-09-15T07:18:24Z</time>
+				</trkpt>
+				<trkpt lat="42.6591257192" lon="42.0059226640">
+					<ele>197.69</ele>
+					<time>2015-09-15T07:18:30Z</time>
+				</trkpt>
+				<trkpt lat="42.6591202710" lon="42.0059140306">
+					<ele>197.21</ele>
+					<time>2015-09-15T07:18:31Z</time>
+				</trkpt>
+				<trkpt lat="42.6590923592" lon="42.0059223287">
+					<ele>200.57</ele>
+					<time>2015-09-15T07:18:38Z</time>
+				</trkpt>
+				<trkpt lat="42.6590858214" lon="42.0059207361">
+					<ele>203.94</ele>
+					<time>2015-09-15T07:18:44Z</time>
+				</trkpt>
+				<trkpt lat="42.6590559818" lon="42.0058958419">
+					<ele>207.30</ele>
+					<time>2015-09-15T07:18:51Z</time>
+				</trkpt>
+				<trkpt lat="42.6590745896" lon="42.0058932435">
+					<ele>210.67</ele>
+					<time>2015-09-15T07:18:57Z</time>
+				</trkpt>
+				<trkpt lat="42.6590954605" lon="42.0059583709">
+					<ele>213.55</ele>
+					<time>2015-09-15T07:19:16Z</time>
+				</trkpt>
+				<trkpt lat="42.6590899285" lon="42.0059608854">
+					<ele>214.03</ele>
+					<time>2015-09-15T07:19:22Z</time>
+				</trkpt>
+			</trkseg>
+		</trk>
+	</gpx>
