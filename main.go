@@ -5,11 +5,7 @@ import (
 	"time"
 )
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
+
 
 type Gpx struct {
 	XMLName      xml.Name `xml:"http://www.topografix.com/GPX/1/1 gpx"`
