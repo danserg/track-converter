@@ -3,61 +3,108 @@ package main
 import (
 	"encoding/xml"
 	"time"
+	"os"
+	"fmt"
+	"io"
+	"golang.org/x/net/html/charset"
 )
 
-
-
+// Gpx is a root node in .gpx document.
 type Gpx struct {
-	XMLName      xml.Name `xml:"http://www.topografix.com/GPX/1/1 gpx"`
-	XmlNsXsi     string   `xml:"xmlns:xsi,attr,omitempty"`
-	XmlSchemaLoc string   `xml:"xsi:schemaLocation,attr,omitempty"`
-	Version      string   `xml:"version,attr"`
-	Creator      string   `xml:"creator,attr"`
-	Tracks       []GpxTrk `xml:"trk"`
+	XMLName  xml.Name  `xml:"gpx"`
+	Version  string    `xml:"version,attr"`
+	Creator  string    `xml:"creator,attr"`
+	Wpt      []Wpt    `xml:"wpt"`
+	Rte      []Rte    `xml:"rte"`
+	Trk      []Trk    `xml:"trk"`
+
+}
+// Rte represents route - an ordered list of waypoints representing a series of turn points leading to a destination.
+type Rte struct {
+	Name   string  `xml:"name"`
+	Cmt    string  `xml:"cmt"`
+	Desc   string  `xml:"desc"`
+	Src    string  `xml:"src"`
+	Number uint    `xml:"number"`
+	Type   string  `xml:"type"`
+	Rtept  []Wpt  `xml:"rtept"`
 }
 
+// Trk represents a track - an ordered list of points describing a path.
 type Trk struct {
-	XMLName string `xml:"trkseg"`
+	Name   string    `xml:"name"`
+	Cmt    string    `xml:"cmt"`
+	Desc   string    `xml:"desc"`
+	Src    string    `xml:"src"`
+	Number uint      `xml:"number"`
+	Type   string    `xml:"type"`
+	Trkseg []Trkseg `xml:"trkseg"`
 }
 
-type GpxWpt struct {
+// Trkseg holds a list of Track Points which are logically connected in order.
+type Trkseg struct {
+	Trkpt []Wpt `xml:"trkpt"`
+}
+
+// Wpt represents a waypoint, point of interest, or named feature on a map.
+type Wpt struct {
 	Lat          float64   `xml:"lat,attr"`
 	Lon          float64   `xml:"lon,attr"`
-	Ele          float64   `xml:"ele,omitempty"`
-	Timestamp    time.Time `xml:"time,omitempty"`
-	MagVar       string    `xml:"magvar,omitempty"`
-	GeoIdHeight  string    `xml:"geoidheight,omitempty"`
-	Name         string    `xml:"name,omitempty"`
-	Cmt          string    `xml:"cmt,omitempty"`
-	Desc         string    `xml:"desc,omitempty"`
-	Src          string    `xml:"src,omitempty"`
-	Sym          string    `xml:"sym,omitempty"`
-	Type         string    `xml:"type,omitempty"`
-	Fix          string    `xml:"fix,omitempty"`
-	Sat          int       `xml:"sat,omitempty"`
-	Hdop         float64   `xml:"hdop,omitempty"`
-	Vdop         float64   `xml:"vdop,omitempty"`
-	Pdop         float64   `xml:"pdop,omitempty"`
-	AgeOfGpsData float64   `xml:"ageofgpsdata,omitempty"`
-	DGpsId       int       `xml:"dgpsid,omitempty"`
+	Ele          float64   `xml:"ele"`
+	Time         time.Time `xml:"time"`
+	Magvar       float64   `xml:"magvar"`
+	GeoIDHeight  float64   `xml:"geoidheight"`
+	Name         string    `xml:"name"`
+	Cmt          string    `xml:"cmt"`
+	Desc         string    `xml:"desc"`
+	Src          string    `xml:"src"`
+	Sym          string    `xml:"sym"`
+	Type         string    `xml:"type"`
+	Fix          string    `xml:"fix"` // http://www.topografix.com/gpx/1/1/#type_fixType
+	Sat          uint      `xml:"sat"`
+	Hdop         float64   `xml:"hdop"`
+	Vdop         float64   `xml:"vdop"`
+	Pdop         float64   `xml:"pdop"`
+	AgeOfGPSData float64   `xml:"ageofgpsdata"`
+	DGPSID       uint      `xml:"dgpsid"`
 }
 
-type GpxTrkseg struct {
-	XMLName xml.Name `xml:"trkseg"`
-	Points  []GpxWpt `xml:"trkpt"`
+// ParseFile returns a Gpx struct from gpx file
+func ParseFile(path string) (*Gpx, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, fmt.Errorf("could not open file: %s", err)
+	}
+	return parse(file)
 }
 
-type GpxTrk struct {
-	XMLName  xml.Name    `xml:"trk"`
-	Name     string      `xml:"name,omitempty"`
-	Cmt      string      `xml:"cmt,omitempty"`
-	Desc     string      `xml:"desc,omitempty"`
-	Src      string      `xml:"src,omitempty"`
-	Number   int         `xml:"number,omitempty"`
-	Type     string      `xml:"type,omitempty"`
-	Segments []GpxTrkseg `xml:"trkseg"`
+func parse(r io.Reader) (*Gpx, error) {
+	var gpx Gpx
+	d := xml.NewDecoder(r)
+	d.CharsetReader = charset.NewReaderLabel
+	err := d.Decode(&gpx)
+	if err != nil {
+		return nil, fmt.Errorf("could not decode gpx to struct: %s", err)
+	}
+	return &gpx, nil
 }
 
 func main() {
+	g, err := ParseFile("file.gpx")
+	if err != nil {
+		panic(err)
+	}
+
+	for _, track := range g.Trk {
+		for _, segment := range track.Trkseg {
+			for _, pt := range segment.Trkpt {
+				// Do something with pt.Lat, pt.Lon, etc...
+			}
+		}
+	}
+
+
+
+
 
 }
