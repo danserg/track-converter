@@ -90,7 +90,7 @@ func parse(r io.Reader) (*Gpx, error) {
 }
 
 func main() {
-	g, err := ParseFile("file.gpx")
+	g, err := ParseFile("./sample/garmin-waypoints.gpx")
 	if err != nil {
 		panic(err)
 	}
@@ -99,10 +99,18 @@ func main() {
 		for _, segment := range track.Trkseg {
 			for _, pt := range segment.Trkpt {
 				// Do something with pt.Lat, pt.Lon, etc...
+				fmt.Println("pt: ", pt)
+
 			}
+			//fmt.Println("segment:", segment)
 		}
+		fmt.Println("track:", track)
 	}
 
+	for _, wpt := range g.Wpt {
+		fmt.Println("waypoints:", wpt.Name, wpt.Cmt, wpt.Lat, wpt.Lon, wpt.Ele)
+
+	}
 
 
 
