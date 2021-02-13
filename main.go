@@ -3,14 +3,14 @@ package main
 import (
 	"encoding/xml"
 	"fmt"
-	"github.com/danserg/track-converter/gpstypes"
 	"golang.org/x/net/html/charset"
 	"io"
 	"os"
+	"track-converter/gpstypes"
 )
 
 // ParseFile returns a Gpx gpstypes from gpx file
-func ParseFile(path string) (*Gpx, error) {
+func ParseFile(path string) (*gpstypes.Gpx, error) {
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, fmt.Errorf("could not open file: %s", err)
@@ -18,8 +18,8 @@ func ParseFile(path string) (*Gpx, error) {
 	return parse(file)
 }
 
-func parse(r io.Reader) (*Gpx, error) {
-	var gpx Gpx
+func parse(r io.Reader) (*gpstypes.Gpx, error) {
+	var gpx gpstypes.Gpx
 	d := xml.NewDecoder(r)
 	d.CharsetReader = charset.NewReaderLabel
 	err := d.Decode(&gpx)
@@ -30,7 +30,7 @@ func parse(r io.Reader) (*Gpx, error) {
 }
 
 func main() {
-	g, err := ParseFile("./sample/garmin-tracks.gpx")
+	g, err := ParseFile("./sample/desna_splav.gpx")
 	if err != nil {
 		panic(err)
 	}
@@ -44,11 +44,11 @@ func main() {
 			}
 			//fmt.Println("segment:", segment)
 		}
-		fmt.Println("track:", track.Trkseg)
+
 	}
 
 	for _, wpt := range g.Wpt {
-		fmt.Println("waypoints:", wpt.Name, wpt.Cmt, wpt.Lat, wpt.Lon, wpt.Ele)
+		fmt.Println("waypoints:", wpt.Name, wpt.Lat, wpt.Lon)
 
 	}
 

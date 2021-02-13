@@ -1,4 +1,4 @@
-module github.com/danserg/track-converter
+module track-converter
 
 go 1.15
 
