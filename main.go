@@ -3,10 +3,11 @@ package main
 import (
 	"encoding/xml"
 	"fmt"
-	"golang.org/x/net/html/charset"
 	"io"
 	"os"
 	"track-converter/gpstypes"
+
+	"golang.org/x/net/html/charset"
 )
 
 // ParseFile returns a Gpx gpstypes from gpx file
@@ -30,26 +31,23 @@ func parse(r io.Reader) (*gpstypes.Gpx, error) {
 }
 
 func main() {
-	g, err := ParseFile("./sample/desna_splav.gpx")
+	//g, err := ParseFile("./sample/garmin-waypoints.gpx")
+	g, err := ParseFile("./sample/garmin-tracks.gpx")
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(g.Version)
+
 	for _, track := range g.Trk {
 		for _, segment := range track.Trkseg {
 			for _, pt := range segment.Trkpt {
 				// Do something with pt.Lat, pt.Lon, etc...
-				fmt.Println("pt: ", pt.Lat, pt.Lon, pt.Ele)
-
+				fmt.Println("pt: ", pt.Lat, pt.Lon)
 			}
-			//fmt.Println("segment:", segment)
 		}
-
 	}
-
 	for _, wpt := range g.Wpt {
-		fmt.Println("waypoints:", wpt.Name, wpt.Lat, wpt.Lon)
-
+		fmt.Println("waypoints:", wpt.Name, wpt.Lat, wpt.Lon, wpt.Cmt)
 	}
 
 }
